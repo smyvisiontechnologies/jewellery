@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>Svarnam · Timeless Heirloom Jewelry | India's Gold Legacy</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Elegant + Modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0e1f16 0%, #08140e 100%);
+      font-family: 'Inter', sans-serif;
+      color: #ede6d9;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif, .logo-text h2, .jewel-name, .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    /* premium gold scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e2e25;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d4af37;
+      border-radius: 10px;
+    }
+
+    /* animations */
+    @keyframes fadeGlow {
+      0% { opacity: 0; transform: translateY(30px); filter: blur(2px);}
+      100% { opacity: 1; transform: translateY(0); filter: blur(0);}
+    }
+    .animate-fade-up {
+      animation: fadeGlow 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    /* Header - deep royal */
+    .header {
+      background: rgba(8, 20, 14, 0.96);
+      backdrop-filter: blur(18px);
+      padding: 0.9rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #d4af37;
+      box-shadow: 0 8px 24px -10px rgba(0,0,0,0.6);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(145deg, #f5e2b0, #c9a04b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo-text h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #f8e9c2, #e2b86b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+    .logo-text p {
+      font-size: 0.7rem;
+      letter-spacing: 3.5px;
+      color: #dbbf7a;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      color: #f2e3cf;
+      transition: 0.2s;
+      cursor: pointer;
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a.active-nav {
+      border-bottom-color: #e5bc6c;
+      color: #ffefcf;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.9rem;
+      color: #f3d382;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #0a1f14f5;
+      backdrop-filter: blur(20px);
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 1.5rem;
+      gap: 0.8rem;
+      border-radius: 0 0 32px 32px;
+      z-index: 1000;
+      border-bottom: 1px solid #d4af37;
+    }
+    .mobile-nav a {
+      color: #faefda;
+      padding: 0.8rem;
+      font-weight: 600;
+      border-bottom: 1px solid #4d6e53;
+      font-size: 1rem;
+    }
+    .mobile-nav.show-mobile { display: flex; }
+
+    /* main container */
+    .main {
+      max-width: 1400px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 2rem;
+    }
+
+    /* premium section card */
+    .section-card {
+      background: rgba(14, 32, 22, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 48px 20px 48px 20px;
+      padding: 3rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 25px 40px -18px black;
+      transition: all 0.3s ease;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      border-left: 6px solid #e5bc6c;
+      padding-left: 1.5rem;
+      letter-spacing: -0.5px;
+      color: #fff6e8;
+    }
+
+    /* Hero section - enhanced with more content */
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+    }
+    .hero-text {
+      flex: 1.2;
+    }
+    .hero-badge {
+      font-size: 0.75rem;
+      letter-spacing: 5px;
+      color: #eac884;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.2);
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+    }
+    .hero-text h1 {
+      font-size: 4.8rem;
+      line-height: 1.05;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff0cf, #e0b25c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin: 1.5rem 0;
+      color: #e6dac8;
+      max-width: 90%;
+      line-height: 1.5;
+    }
+    .feature-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0 1rem;
+      border-top: 1px solid rgba(212,175,55,0.3);
+      padding-top: 1.5rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .feature-item i {
+      color: #e9bc6d;
+      font-size: 1.2rem;
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #cfaa5a, #b0863c);
+      border: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      color: #0f2419;
+      cursor: pointer;
+      transition: 0.25s;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+      margin-top: 0.5rem;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(95deg, #e2bc6f, #c69d48);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 28px -8px #b47c2e;
+    }
+    .hero-image {
+      flex: 1;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 30px 40px -15px black;
+      border: 1px solid #cb9f4b;
+    }
+    .hero-image img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* stats bar */
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      background: rgba(0,0,0,0.3);
+      padding: 1.2rem 1.5rem;
+      border-radius: 80px;
+      backdrop-filter: blur(4px);
+    }
+    .stat {
+      text-align: center;
+      flex: 1;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #f5cf8a;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    /* jewelry grid */
+    .jewelry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+    .jewel-card {
+      background: #10261c;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.4s;
+      border: 1px solid #3f5a48;
+      cursor: pointer;
+    }
+    .jewel-card:hover {
+      transform: translateY(-10px);
+      border-color: #e0b155;
+      box-shadow: 0 30px 35px -12px rgba(0,0,0,0.5);
+    }
+    .jewel-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+    .jewel-body {
+      padding: 1.5rem;
+    }
+    .jewel-name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #f7e4bd;
+    }
+    .jewel-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f3cb7a;
+      margin: 0.5rem 0;
+    }
+    .jewel-desc {
+      font-size: 0.8rem;
+      color: #c3bb9e;
+      margin-bottom: 1.2rem;
+    }
+    .btn-add {
+      background: transparent;
+      border: 1.5px solid #e6bc6e;
+      color: #ffefcf;
+      padding: 0.7rem;
+      width: 100%;
+      border-radius: 60px;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .btn-add:hover {
+      background: #e6bc6e22;
+      border-color: #fad28c;
+      color: #fff6e5;
+    }
+
+    /* INQUIRY / CONTACT SECTION - fully responsive premium */
+    .inquiry-panel {
+      background: #0a1f16;
+      border-radius: 38px;
+      padding: 2rem;
+      margin: 1.8rem 0;
+      border: 1px solid #dbb45c;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .cart-items {
+      flex: 2;
+      min-width: 240px;
+    }
+    .cart-items h3 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #f2dcb2;
+    }
+    #selected-items-list {
+      background: #0c241b;
+      border-radius: 28px;
+      padding: 1rem 1.5rem;
+      max-height: 260px;
+      overflow-y: auto;
+      list-style: none;
+      border: 1px solid #4d724c;
+    }
+    #selected-items-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #6f8f6a;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cart-total {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-top: 1rem;
+      color: #f7cf85;
+    }
+    .whatsapp-btn {
+      background: #1f8b4c;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+      color: #fff3e2;
+    }
+    .whatsapp-btn:hover {
+      background: #0f6a3a;
+      transform: scale(0.98);
+    }
+    .user-details-form {
+      background: #0e261c;
+      border-radius: 38px;
+      padding: 2rem;
+      border: 1px solid #b88f48;
+      flex: 2.5;
+      width: 100%;
+    }
+    .form-row input, .form-row textarea {
+      width: 100%;
+      background: #1d372b;
+      border: 1px solid #cbac6b;
+      padding: 1rem 1.4rem;
+      border-radius: 60px;
+      color: #fef1e0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .form-row input:focus, .form-row textarea:focus {
+      outline: none;
+      border-color: #e8c174;
+      box-shadow: 0 0 0 2px rgba(212,175,55,0.3);
+    }
+    .form-row-flex {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .form-row-flex .form-row {
+      flex: 1;
+      min-width: 150px;
+    }
+    .submit-inquiry {
+      background: #c9973e;
+      width: 100%;
+      border: none;
+      padding: 1rem;
+      border-radius: 60px;
+      font-weight: 800;
+      color: #0b1f14;
+      font-size: 1rem;
+      transition: 0.2s;
+      cursor: pointer;
+      margin-top: 0.8rem;
+    }
+    .submit-inquiry:hover {
+      background: #e2b155;
+      transform: translateY(-2px);
+    }
+    .error-msg {
+      color: #f7bc7a;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.8rem;
+    }
+    .contact-extra {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #cfb27c;
+    }
+    .footer {
+      background: #05120c;
+      padding: 2rem;
+      text-align: center;
+      border-top: 2px solid #cb9f4b;
+      font-size: 0.8rem;
+      color: #ddbc83;
+    }
+
+    /* responsive */
+    @media (max-width: 950px) {
+      .header { padding: 0.8rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero-text h1 { font-size: 3rem; }
+      .section-title { font-size: 2rem; }
+      .section-card { padding: 1.8rem; }
+      .inquiry-panel { flex-direction: column; }
+      .stats-bar { flex-direction: column; align-items: center; border-radius: 40px; gap: 1rem;}
+    }
+    @media (max-width: 600px) {
+      .main { padding: 0 1rem; }
+      .jewel-img { height: 260px; }
+      .hero-text p { max-width: 100%; }
+      .hero-text h1 { font-size: 2.4rem; }
+      .cart-total { font-size: 1.4rem; }
+      .whatsapp-btn { width: 100%; justify-content: center; }
+      .feature-strip { gap: 1rem; flex-direction: column; align-items: flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-area">
+    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+    <div class="logo-text">
+      <h2>SVARNAM</h2>
+      <p>HERITAGE • GOLD • INDIA</p>
+    </div>
+  </div>
+  <nav class="nav-links">
+    <a class="nav-item" data-section="home">HOME</a>
+    <a class="nav-item" data-section="jewelry">COLLECTIONS</a>
+    <a class="nav-item" data-section="inquiry">CONTACT</a>
+  </nav>
+  <button class="hamburger" id="hamburgerBtn"><i class="fas fa-gem"></i></button>
+  <div class="mobile-nav" id="mobileNav">
+    <a class="mobile-nav-item" data-section="home">HOME</a>
+    <a class="mobile-nav-item" data-section="jewelry">COLLECTIONS</a>
+    <a class="mobile-nav-item" data-section="inquiry">CONTACT</a>
+  </div>
+</header>
+
+<main class="main">
+  <!-- HOME Section - rich content, premium theme -->
+  <section id="home-section" class="section-card" data-aos="fade-up">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge"><i class="fas fa-feather-alt"></i> BESPOKE HERITAGE ATELIER</div>
+        <h1>Where Gold <br>Becomes Heirloom</h1>
+        <p>For over six decades, Svarnam has preserved the art of Indian handcrafted jewelry. Every piece — from polki kundan to navratna — is forged by master karigars in Jaipur and Kolkata, carrying the soul of timeless elegance.</p>
+        <div class="feature-strip">
+          <div class="feature-item"><i class="fas fa-certificate"></i> BIS Hallmarked 22k/24k</div>
+          <div class="feature-item"><i class="fas fa-hand-sparkles"></i> Lifetime Polish & Care</div>
+          <div class="feature-item"><i class="fas fa-truck-fast"></i> Free insured shipping</div>
+        </div>
+        <button class="btn-primary nav-item" data-section="jewelry">DISCOVER COLLECTION →</button>
+        <div class="stats-bar">
+          <div class="stat"><div class="stat-number">65+</div><div class="stat-label">Years of Legacy</div></div>
+          <div class="stat"><div class="stat-number">15k+</div><div class="stat-label">Happy Families</div></div>
+          <div class="stat"><div class="stat-number">4</div><div class="stat-label">Generations of Artistry</div></div>
+          <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Ethically Sourced</div></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format" alt="Indian bridal jewelry set" loading="lazy">
+      </div>
+    </div>
+    <div style="margin-top: 2rem; text-align: center; border-top: 1px dashed #b88f48; padding-top: 1.5rem; font-size: 0.8rem;">
+      <i class="fas fa-map-marker-alt"></i> Jaipur | Kolkata | Mumbai | Also available for virtual try-on & global shipping
+    </div>
+  </section>
+
+  <!-- JEWELRY SECTION -->
+  <section id="jewelry-section" class="section-card" style="display: none;" data-aos="fade-up">
+    <h2 class="section-title"><i class="fas fa-star-of-life"></i> Signature Heirlooms</h2>
+    <div class="jewelry-grid" id="jewelryGrid"></div>
+    <div style="margin-top: 2rem; text-align: center; font-size: 0.8rem; color: #e3c48b;"><i class="fas fa-gift"></i> Every piece includes authentication certificate + handcrafted wooden chest</div>
+  </section>
+
+  <!-- CONTACT / INQUIRY SECTION - fully responsive premium -->
+  <section id="inquiry-section" class="section-card" style="display: none;" data-aos="fade-up">
+    <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> Concierge Contact</h2>
+    <div class="inquiry-panel">
+      <div class="cart-items">
+        <h3><i class="fas fa-shopping-bag"></i> Your curation</h3>
+        <ul id="selected-items-list"><li style="color:#dbbc87;">✨ No pieces added. Browse the Collection.</li></ul>
+        <div class="cart-total" id="cartTotalDisplay">Total: ₹0</div>
+        <button class="whatsapp-btn" id="quickWhatsappBtn" style="margin-top: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp Order</button>
+      </div>
+    </div>
+    <div class="user-details-form">
+      <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">📿 Personal details</h3>
+      <p style="margin-bottom: 1.4rem; font-size: 0.8rem;">Our heritage experts will reach out within 90 minutes with a video showcase and custom quote.</p>
+      <form id="inquiryForm">
+        <div class="form-row-flex">
+          <div class="form-row"><input type="text" id="fullName" placeholder="Full name *" required></div>
+          <div class="form-row"><input type="tel" id="phone" placeholder="WhatsApp number *" required></div>
+        </div>
+        <div class="form-row"><input type="email" id="email" placeholder="Email address (optional)"></div>
+        <div class="form-row"><textarea id="address" rows="2" placeholder="City, state & special requests (occasion, preferred metal)"></textarea></div>
+        <div class="form-row"><label style="display: flex; gap: 12px; align-items: center;"><input type="checkbox" id="confirmDetails" required> <span style="font-size: 0.8rem;">I confirm the details are accurate for inquiry</span></label></div>
+        <button type="submit" class="submit-inquiry"><i class="fab fa-whatsapp"></i> Send to Svarnam</button>
+        <div id="formValidationMsg" class="error-msg"></div>
+      </form>
+      <div class="contact-extra">
+        <span><i class="fas fa-phone-alt"></i> +91 98204 77123</span>
+        <span><i class="fas fa-clock"></i> 10 AM – 8 PM IST</span>
+        <span><i class="fas fa-video"></i> Virtual appointment available</span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <p><i class="fas fa-om"></i> SVARNAM — Preserving India's Gold Heritage | Crafted with devotion in Jaipur & Kolkata</p>
+  <p style="margin-top: 0.4rem;">© 2025 · All rights reserved · Heirloom certificates & lifetime exchange</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  (function() {
+    AOS.init({ duration: 700, once: true, offset: 30 });
+
+    // Premium jewelry collection - Indian inspired
+    const jewelryCatalog = [
+      { id: 401, name: "Polki Chandbalis", price: 87900, img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&auto=format", desc: "Uncut diamond crescent earrings, kundan meenakari, royal heritage." },
+      { id: 402, name: "Navratna Rani Ring", price: 124500, img: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?w=600&auto=format", desc: "Nine sacred gemstones set in 22k gold, temple inspired." },
+      { id: 403, name: "Jadau Bridal Nath", price: 42900, img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&auto=format", desc: "Pearl & polki nose ring with intricate jadau work." },
+      { id: 404, name: "Premium Earrings", price: 98500, img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format", desc: "Classic South Indian mango motif long necklace, 24k finish." },
+      { id: 405, name: "Kundan Choker Set", price: 67900, img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&auto=format", desc: "Multicolor kundan with emerald and ruby drops." },
+      { id: 406, name: "Meenakari Bangles", price: 25900, img: "https://images.unsplash.com/photo-1601482438629-346a273776af?w=600&auto=format", desc: "Pair of enamel bangles, peacock motif, traditional craft." }
+    ];
+
+    let cart = [];
+
+    const sections = {
+      home: document.getElementById('home-section'),
+      jewelry: document.getElementById('jewelry-section'),
+      inquiry: document.getElementById('inquiry-section')
+    };
+    const jewelryGrid = document.getElementById('jewelryGrid');
+    const selectedList = document.getElementById('selected-items-list');
+    const cartTotalSpan = document.getElementById('cartTotalDisplay');
+    const quickWhatsapp = document.getElementById('quickWhatsappBtn');
+    const inquiryForm = document.getElementById('inquiryForm');
+    const validationMsgDiv = document.getElementById('formValidationMsg');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function renderJewelry() {
+      if (!jewelryGrid) return;
+      jewelryGrid.innerHTML = '';
+      jewelryCatalog.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'jewel-card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" class="jewel-img" loading="lazy">
+          <div class="jewel-body">
+            <div class="jewel-name">${item.name}</div>
+            <div class="jewel-price">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="jewel-desc">${item.desc}</div>
+            <button class="btn-add" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}">
+              <i class="fas fa-plus-circle"></i> Add to inquiry
+            </button>
+          </div>
+        `;
+        jewelryGrid.appendChild(card);
+      });
+      document.querySelectorAll('.btn-add').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = parseInt(btn.dataset.id);
+          const name = btn.dataset.name;
+          const price = parseInt(btn.dataset.price);
+          addToCart({ id, name, price });
+          const original = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i> Added!';
+          setTimeout(() => { btn.innerHTML = original; }, 1200);
+        });
+      });
+      if (typeof AOS !== 'undefined') AOS.refresh();
+    }
+
+    function addToCart(item) {
+      cart.push({ ...item, cartId: Date.now() + Math.random() * 10000 });
+      updateCartDisplay();
+      showSection('inquiry');
+    }
+
+    function removeFromCart(cartId) {
+      cart = cart.filter(i => i.cartId !== cartId);
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      if (!selectedList) return;
+      if (cart.length === 0) {
+        selectedList.innerHTML = '<li style="color:#dbbc87;">✨ No pieces added. Select from Collection.</li>';
+        cartTotalSpan.innerText = 'Total: ₹0';
+        return;
+      }
+      let html = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        html += `<li>
+          <span style="flex:1;">${item.name}  ₹${item.price.toLocaleString('en-IN')}</span>
+          <i class="fas fa-trash-alt" style="color:#f5bc70; cursor:pointer; font-size:1rem;" data-cartid="${item.cartId}"></i>
+        </li>`;
+      });
+      selectedList.innerHTML = html;
+      cartTotalSpan.innerText = `Total: ₹${total.toLocaleString('en-IN')}`;
+      document.querySelectorAll('[data-cartid]').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+          const cartId = parseFloat(icon.dataset.cartid);
+          removeFromCart(cartId);
+        });
+      });
+    }
+
+    function showSection(sectionId) {
+      Object.values(sections).forEach(s => { if (s) s.style.display = 'none'; });
+      if (sections[sectionId]) sections[sectionId].style.display = 'block';
+      document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(el => el.classList.remove('active-nav'));
+      document.querySelectorAll(`[data-section="${sectionId}"]`).forEach(el => el.classList.add('active-nav'));
+      if (mobileNav) mobileNav.classList.remove('show-mobile');
+      window.scrollTo({ top: 80, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sec = el.getAttribute('data-section');
+        if (sec) showSection(sec);
+      });
+    });
+
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileNav.classList.toggle('show-mobile');
+      });
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) mobileNav.classList.remove('show-mobile');
+      });
+    }
+
+    function buildWhatsAppMsg() {
+      const name = document.getElementById('fullName')?.value.trim() || 'Not provided';
+      const phone = document.getElementById('phone')?.value.trim() || 'Not provided';
+      const email = document.getElementById('email')?.value.trim() || 'Not provided';
+      const address = document.getElementById('address')?.value.trim() || 'Not provided';
+      let itemsText = '';
+      let total = 0;
+      if (cart.length === 0) itemsText = '✨ No pieces selected (general inquiry)';
+      else {
+        cart.forEach((it, idx) => {
+          itemsText += `${idx+1}. ${it.name} — ₹${it.price.toLocaleString('en-IN')}\n`;
+          total += it.price;
+        });
+        itemsText += `\n💎 TOTAL AMOUNT: ₹${total.toLocaleString('en-IN')}`;
+      }
+      return encodeURIComponent(`*SVARNAM HERITAGE INQUIRY* 🙏
+━━━━━━━━━━━━━━
+👑 *Client Details*
+Name: ${name}
+WhatsApp: ${phone}
+Email: ${email}
+City/Note: ${address}
+
+📜 *Selected Heirlooms*
+${itemsText}
+━━━━━━━━━━━━━━
+Kindly share availability, video, and best price.`);
+    }
+
+    function sendToWhatsApp() {
+      const msg = buildWhatsAppMsg();
+      const number = '919820477123';
+      window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+    }
+
+    function validateAndSend(e) {
+      e.preventDefault();
+      if (validationMsgDiv) validationMsgDiv.innerText = '';
+      const name = document.getElementById('fullName')?.value.trim();
+      const phone = document.getElementById('phone')?.value.trim();
+      const confirmBox = document.getElementById('confirmDetails')?.checked;
+      if (!name) { validationMsgDiv.innerText = '❌ Please enter your full name.'; return; }
+      if (!phone || phone.length < 10) { validationMsgDiv.innerText = '❌ Valid WhatsApp number required (10+ digits).'; return; }
+      if (!confirmBox) { validationMsgDiv.innerText = '❌ Please confirm your details.'; return; }
+      if (cart.length === 0 && !confirm('Your cart is empty. Continue with general inquiry?')) return;
+      sendToWhatsApp();
+    }
+
+    if (quickWhatsapp) {
+      quickWhatsapp.addEventListener('click', () => {
+        if (cart.length === 0) { alert('Please add jewelry pieces from the Collection. We will help with custom designs too.'); showSection('jewelry'); return; }
+        sendToWhatsApp();
+      });
+    }
+    if (inquiryForm) inquiryForm.addEventListener('submit', validateAndSend);
+
+    renderJewelry();
+    showSection('home');
+    updateCartDisplay();
+  })();
+</script>
+</body>
+</html>
