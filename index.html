@@ -31,7 +31,6 @@
       letter-spacing: -0.3px;
     }
 
-    /* premium gold scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -44,16 +43,7 @@
       border-radius: 10px;
     }
 
-    /* animations */
-    @keyframes fadeGlow {
-      0% { opacity: 0; transform: translateY(30px); filter: blur(2px);}
-      100% { opacity: 1; transform: translateY(0); filter: blur(0);}
-    }
-    .animate-fade-up {
-      animation: fadeGlow 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-    }
-
-    /* Header - deep royal */
+    /* Header */
     .header {
       background: rgba(8, 20, 14, 0.96);
       backdrop-filter: blur(18px);
@@ -119,12 +109,33 @@
 
     .hamburger {
       display: none;
-      background: none;
-      border: none;
-      font-size: 1.9rem;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1.5px solid #d4af37;
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1.5rem;
       color: #f3d382;
       cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
     }
+    .hamburger i {
+      font-size: 1.4rem;
+    }
+    .hamburger span {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .hamburger:hover {
+      background: rgba(212, 175, 55, 0.3);
+      border-color: #f0cf8b;
+      color: #fff1d6;
+    }
+
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -134,29 +145,43 @@
       position: absolute;
       top: 100%;
       left: 0;
-      padding: 1.5rem;
-      gap: 0.8rem;
-      border-radius: 0 0 32px 32px;
+      padding: 1.8rem 2rem;
+      gap: 1rem;
       z-index: 1000;
-      border-bottom: 1px solid #d4af37;
+      border-bottom: 2px solid #d4af37;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 20px 30px -12px black;
     }
     .mobile-nav a {
       color: #faefda;
-      padding: 0.8rem;
+      padding: 1rem;
       font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
       border-bottom: 1px solid #4d6e53;
-      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mobile-nav a i {
+      width: 28px;
+      color: #e5bc6c;
+    }
+    .mobile-nav a:hover {
+      color: #e5bc6c;
+      background: rgba(212,175,55,0.1);
+      padding-left: 1.5rem;
     }
     .mobile-nav.show-mobile { display: flex; }
 
-    /* main container */
     .main {
       max-width: 1400px;
       margin: 1.5rem auto 3rem;
       padding: 0 2rem;
     }
 
-    /* premium section card */
     .section-card {
       background: rgba(14, 32, 22, 0.7);
       backdrop-filter: blur(4px);
@@ -178,16 +203,56 @@
       color: #fff6e8;
     }
 
-    /* Hero section - enhanced with more content */
+    /* Hero Grid - Image First on mobile */
     .hero-grid {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 3rem;
     }
+    .hero-image {
+      flex: 1;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 30px 40px -15px black;
+      border: 1px solid #cb9f4b;
+    }
     .hero-text {
       flex: 1.2;
     }
+    @media (max-width: 950px) {
+      .hero-grid {
+        flex-direction: column;
+      }
+      .hero-image {
+        order: 1;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      .hero-text {
+        order: 2;
+      }
+      .header { padding: 0.8rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-text h1 { font-size: 2.8rem; }
+      .section-title { font-size: 2rem; }
+      .section-card { padding: 1.8rem; }
+      .stats-bar { flex-direction: column; align-items: center; border-radius: 40px; gap: 1rem;}
+    }
+    @media (min-width: 951px) {
+      .hero-image { order: 2; }
+      .hero-text { order: 1; }
+    }
+    @media (max-width: 600px) {
+      .main { padding: 0 1rem; }
+      .hero-text h1 { font-size: 2.4rem; }
+      .hero-text p { max-width: 100%; }
+      .feature-strip { gap: 1rem; flex-direction: column; align-items: flex-start;}
+      .hamburger span { display: none; }
+      .hamburger { padding: 0.6rem 1rem; }
+    }
+
     .hero-badge {
       font-size: 0.75rem;
       letter-spacing: 5px;
@@ -201,7 +266,6 @@
     .hero-text h1 {
       font-size: 4.8rem;
       line-height: 1.05;
-      font-weight: 800;
       background: linear-gradient(135deg, #fff0cf, #e0b25c);
       -webkit-background-clip: text;
       background-clip: text;
@@ -249,25 +313,13 @@
     .btn-primary:hover {
       background: linear-gradient(95deg, #e2bc6f, #c69d48);
       transform: translateY(-3px);
-      box-shadow: 0 18px 28px -8px #b47c2e;
-    }
-    .hero-image {
-      flex: 1;
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: 0 30px 40px -15px black;
-      border: 1px solid #cb9f4b;
     }
     .hero-image img {
       width: 100%;
       display: block;
       transition: transform 0.6s ease;
     }
-    .hero-image:hover img {
-      transform: scale(1.02);
-    }
 
-    /* stats bar */
     .stats-bar {
       display: flex;
       justify-content: space-between;
@@ -294,7 +346,7 @@
       letter-spacing: 1px;
     }
 
-    /* jewelry grid */
+    /* Jewelry Grid */
     .jewelry-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -317,7 +369,6 @@
       width: 100%;
       height: 320px;
       object-fit: cover;
-      transition: 0.4s;
     }
     .jewel-body {
       padding: 1.5rem;
@@ -346,21 +397,23 @@
       width: 100%;
       border-radius: 60px;
       font-weight: 600;
-      transition: 0.2s;
       cursor: pointer;
     }
     .btn-add:hover {
       background: #e6bc6e22;
       border-color: #fad28c;
-      color: #fff6e5;
     }
 
-    /* INQUIRY / CONTACT SECTION - fully responsive premium */
+    /* ===== FULLY RESPONSIVE CONTACT/INQUIRY SECTION ===== */
+    .inquiry-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
     .inquiry-panel {
       background: #0a1f16;
       border-radius: 38px;
       padding: 2rem;
-      margin: 1.8rem 0;
       border: 1px solid #dbb45c;
       display: flex;
       flex-wrap: wrap;
@@ -413,20 +466,30 @@
       transition: 0.2s;
       font-size: 1rem;
       color: #fff3e2;
+      width: auto;
     }
     .whatsapp-btn:hover {
       background: #0f6a3a;
       transform: scale(0.98);
     }
+    /* User details form - FULLY RESPONSIVE */
     .user-details-form {
       background: #0e261c;
       border-radius: 38px;
       padding: 2rem;
       border: 1px solid #b88f48;
-      flex: 2.5;
       width: 100%;
     }
-    .form-row input, .form-row textarea {
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+    .form-row {
+      width: 100%;
+    }
+    .form-row input, 
+    .form-row textarea,
+    .form-group input,
+    .form-group textarea {
       width: 100%;
       background: #1d372b;
       border: 1px solid #cbac6b;
@@ -436,8 +499,17 @@
       font-family: 'Inter', sans-serif;
       font-weight: 500;
       transition: 0.2s;
+      font-size: 1rem;
     }
-    .form-row input:focus, .form-row textarea:focus {
+    .form-row textarea,
+    .form-group textarea {
+      border-radius: 28px;
+      resize: vertical;
+    }
+    .form-row input:focus, 
+    .form-row textarea:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
       outline: none;
       border-color: #e8c174;
       box-shadow: 0 0 0 2px rgba(212,175,55,0.3);
@@ -446,10 +518,28 @@
       display: flex;
       gap: 1.2rem;
       flex-wrap: wrap;
+      margin-bottom: 1rem;
     }
     .form-row-flex .form-row {
       flex: 1;
-      min-width: 150px;
+      min-width: 180px;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 1.2rem 0;
+    }
+    .checkbox-row input {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: #e5bc6c;
+    }
+    .checkbox-row span {
+      font-size: 0.85rem;
+      color: #e6d5b6;
     }
     .submit-inquiry {
       background: #c9973e;
@@ -462,7 +552,7 @@
       font-size: 1rem;
       transition: 0.2s;
       cursor: pointer;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
     }
     .submit-inquiry:hover {
       background: #e2b155;
@@ -475,7 +565,7 @@
       font-size: 0.8rem;
     }
     .contact-extra {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       display: flex;
       justify-content: center;
       gap: 1.5rem;
@@ -483,6 +573,53 @@
       font-size: 0.75rem;
       color: #cfb27c;
     }
+    /* Responsive adjustments for contact section */
+    @media (max-width: 768px) {
+      .inquiry-panel {
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+      .cart-items {
+        width: 100%;
+      }
+      .user-details-form {
+        padding: 1.5rem;
+      }
+      .form-row-flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .form-row-flex .form-row {
+        min-width: 100%;
+      }
+      .whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .cart-total {
+        font-size: 1.4rem;
+      }
+      .cart-items h3 {
+        font-size: 1.6rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .user-details-form {
+        padding: 1.2rem;
+      }
+      .form-row input, 
+      .form-group input,
+      .form-row textarea {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .contact-extra {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+    }
+
     .footer {
       background: #05120c;
       padding: 2rem;
@@ -490,27 +627,6 @@
       border-top: 2px solid #cb9f4b;
       font-size: 0.8rem;
       color: #ddbc83;
-    }
-
-    /* responsive */
-    @media (max-width: 950px) {
-      .header { padding: 0.8rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-      .hero-text h1 { font-size: 3rem; }
-      .section-title { font-size: 2rem; }
-      .section-card { padding: 1.8rem; }
-      .inquiry-panel { flex-direction: column; }
-      .stats-bar { flex-direction: column; align-items: center; border-radius: 40px; gap: 1rem;}
-    }
-    @media (max-width: 600px) {
-      .main { padding: 0 1rem; }
-      .jewel-img { height: 260px; }
-      .hero-text p { max-width: 100%; }
-      .hero-text h1 { font-size: 2.4rem; }
-      .cart-total { font-size: 1.4rem; }
-      .whatsapp-btn { width: 100%; justify-content: center; }
-      .feature-strip { gap: 1rem; flex-direction: column; align-items: flex-start;}
     }
   </style>
 </head>
@@ -529,18 +645,23 @@
     <a class="nav-item" data-section="jewelry">COLLECTIONS</a>
     <a class="nav-item" data-section="inquiry">CONTACT</a>
   </nav>
-  <button class="hamburger" id="hamburgerBtn"><i class="fas fa-gem"></i></button>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <i class="fas fa-bars-staggered"></i>
+    <span>MENU</span>
+  </button>
   <div class="mobile-nav" id="mobileNav">
-    <a class="mobile-nav-item" data-section="home">HOME</a>
-    <a class="mobile-nav-item" data-section="jewelry">COLLECTIONS</a>
-    <a class="mobile-nav-item" data-section="inquiry">CONTACT</a>
+    <a class="mobile-nav-item" data-section="home"><i class="fas fa-home"></i> HOME</a>
+    <a class="mobile-nav-item" data-section="jewelry"><i class="fas fa-ring"></i> COLLECTIONS</a>
+    <a class="mobile-nav-item" data-section="inquiry"><i class="fas fa-headset"></i> CONTACT</a>
   </div>
 </header>
 
 <main class="main">
-  <!-- HOME Section - rich content, premium theme -->
   <section id="home-section" class="section-card" data-aos="fade-up">
     <div class="hero-grid">
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format" alt="Indian bridal jewelry set" loading="eager">
+      </div>
       <div class="hero-text">
         <div class="hero-badge"><i class="fas fa-feather-alt"></i> BESPOKE HERITAGE ATELIER</div>
         <h1>Where Gold <br>Becomes Heirloom</h1>
@@ -558,51 +679,52 @@
           <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Ethically Sourced</div></div>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format" alt="Indian bridal jewelry set" loading="lazy">
-      </div>
     </div>
     <div style="margin-top: 2rem; text-align: center; border-top: 1px dashed #b88f48; padding-top: 1.5rem; font-size: 0.8rem;">
-      <i class="fas fa-map-marker-alt"></i> Jaipur | Kolkata | Mumbai | Also available for virtual try-on & global shipping
+      <i class="fas fa-map-marker-alt"></i> Jaipur | Kolkata | Mumbai | Virtual try-on & global shipping
     </div>
   </section>
 
-  <!-- JEWELRY SECTION -->
   <section id="jewelry-section" class="section-card" style="display: none;" data-aos="fade-up">
     <h2 class="section-title"><i class="fas fa-star-of-life"></i> Signature Heirlooms</h2>
     <div class="jewelry-grid" id="jewelryGrid"></div>
     <div style="margin-top: 2rem; text-align: center; font-size: 0.8rem; color: #e3c48b;"><i class="fas fa-gift"></i> Every piece includes authentication certificate + handcrafted wooden chest</div>
   </section>
 
-  <!-- CONTACT / INQUIRY SECTION - fully responsive premium -->
+  <!-- INQUIRY SECTION - FULLY RESPONSIVE CONTACT FORM -->
   <section id="inquiry-section" class="section-card" style="display: none;" data-aos="fade-up">
     <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> Concierge Contact</h2>
-    <div class="inquiry-panel">
-      <div class="cart-items">
-        <h3><i class="fas fa-shopping-bag"></i> Your curation</h3>
-        <ul id="selected-items-list"><li style="color:#dbbc87;">✨ No pieces added. Browse the Collection.</li></ul>
-        <div class="cart-total" id="cartTotalDisplay">Total: ₹0</div>
-        <button class="whatsapp-btn" id="quickWhatsappBtn" style="margin-top: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp Order</button>
-      </div>
-    </div>
-    <div class="user-details-form">
-      <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">📿 Personal details</h3>
-      <p style="margin-bottom: 1.4rem; font-size: 0.8rem;">Our heritage experts will reach out within 90 minutes with a video showcase and custom quote.</p>
-      <form id="inquiryForm">
-        <div class="form-row-flex">
-          <div class="form-row"><input type="text" id="fullName" placeholder="Full name *" required></div>
-          <div class="form-row"><input type="tel" id="phone" placeholder="WhatsApp number *" required></div>
+    <div class="inquiry-wrapper">
+      <div class="inquiry-panel">
+        <div class="cart-items">
+          <h3><i class="fas fa-shopping-bag"></i> Your curation</h3>
+          <ul id="selected-items-list"><li style="color:#dbbc87;">✨ No pieces added. Browse the Collection.</li></ul>
+          <div class="cart-total" id="cartTotalDisplay">Total: ₹0</div>
+          <button class="whatsapp-btn" id="quickWhatsappBtn" style="margin-top: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp Order</button>
         </div>
-        <div class="form-row"><input type="email" id="email" placeholder="Email address (optional)"></div>
-        <div class="form-row"><textarea id="address" rows="2" placeholder="City, state & special requests (occasion, preferred metal)"></textarea></div>
-        <div class="form-row"><label style="display: flex; gap: 12px; align-items: center;"><input type="checkbox" id="confirmDetails" required> <span style="font-size: 0.8rem;">I confirm the details are accurate for inquiry</span></label></div>
-        <button type="submit" class="submit-inquiry"><i class="fab fa-whatsapp"></i> Send to Svarnam</button>
-        <div id="formValidationMsg" class="error-msg"></div>
-      </form>
-      <div class="contact-extra">
-        <span><i class="fas fa-phone-alt"></i> +91 98204 77123</span>
-        <span><i class="fas fa-clock"></i> 10 AM – 8 PM IST</span>
-        <span><i class="fas fa-video"></i> Virtual appointment available</span>
+      </div>
+      <div class="user-details-form">
+        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">📿 Personal details</h3>
+        <p style="margin-bottom: 1.4rem; font-size: 0.8rem;">Our heritage experts will reach out within 90 minutes with a video showcase and custom quote.</p>
+        <form id="inquiryForm">
+          <div class="form-row-flex">
+            <div class="form-row"><input type="text" id="fullName" placeholder="Full name *" required></div>
+            <div class="form-row"><input type="tel" id="phone" placeholder="WhatsApp number *" required></div>
+          </div>
+          <div class="form-group"><input type="email" id="email" placeholder="Email address (optional)"></div>
+          <div class="form-group"><textarea id="address" rows="2" placeholder="City, state & special requests (occasion, preferred metal)"></textarea></div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="confirmDetails" required>
+            <span>I confirm the details are accurate for inquiry</span>
+          </div>
+          <button type="submit" class="submit-inquiry"><i class="fab fa-whatsapp"></i> Send to Svarnam</button>
+          <div id="formValidationMsg" class="error-msg"></div>
+        </form>
+        <div class="contact-extra">
+          <span><i class="fas fa-phone-alt"></i> +91 98204 77123</span>
+          <span><i class="fas fa-clock"></i> 10 AM – 8 PM IST</span>
+          <span><i class="fas fa-video"></i> Virtual appointment available</span>
+        </div>
       </div>
     </div>
   </section>
@@ -617,18 +739,16 @@
   (function() {
     AOS.init({ duration: 700, once: true, offset: 30 });
 
-    // Premium jewelry collection - Indian inspired
     const jewelryCatalog = [
-      { id: 401, name: "Polki Chandbalis", price: 87900, img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&auto=format", desc: "Uncut diamond crescent earrings, kundan meenakari, royal heritage." },
-      { id: 402, name: "Navratna Rani Ring", price: 124500, img: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?w=600&auto=format", desc: "Nine sacred gemstones set in 22k gold, temple inspired." },
+      { id: 401, name: "Polki Chandbalis", price: 87900, img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&auto=format", desc: "Uncut diamond crescent earrings, kundan meenakari." },
+      { id: 402, name: "Navratna Rani Ring", price: 124500, img: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?w=600&auto=format", desc: "Nine sacred gemstones set in 22k gold." },
       { id: 403, name: "Jadau Bridal Nath", price: 42900, img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&auto=format", desc: "Pearl & polki nose ring with intricate jadau work." },
-      { id: 404, name: "Premium Earrings", price: 98500, img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format", desc: "Classic South Indian mango motif long necklace, 24k finish." },
+      { id: 404, name: "Premium Necklace", price: 98500, img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format", desc: "Classic South Indian mango motif, 24k finish." },
       { id: 405, name: "Kundan Choker Set", price: 67900, img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&auto=format", desc: "Multicolor kundan with emerald and ruby drops." },
-      { id: 406, name: "Meenakari Bangles", price: 25900, img: "https://images.unsplash.com/photo-1601482438629-346a273776af?w=600&auto=format", desc: "Pair of enamel bangles, peacock motif, traditional craft." }
+      { id: 406, name: "Meenakari Bangles", price: 25900, img: "https://images.unsplash.com/photo-1601482438629-346a273776af?w=600&auto=format", desc: "Pair of enamel bangles, peacock motif." }
     ];
 
     let cart = [];
-
     const sections = {
       home: document.getElementById('home-section'),
       jewelry: document.getElementById('jewelry-section'),
@@ -666,10 +786,9 @@
       document.querySelectorAll('.btn-add').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const id = parseInt(btn.dataset.id);
           const name = btn.dataset.name;
           const price = parseInt(btn.dataset.price);
-          addToCart({ id, name, price });
+          addToCart({ id: btn.dataset.id, name, price });
           const original = btn.innerHTML;
           btn.innerHTML = '<i class="fas fa-check"></i> Added!';
           setTimeout(() => { btn.innerHTML = original; }, 1200);
@@ -736,9 +855,30 @@
       hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
         mobileNav.classList.toggle('show-mobile');
+        const icon = hamburger.querySelector('i');
+        if (mobileNav.classList.contains('show-mobile')) {
+          icon.classList.remove('fa-bars-staggered');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars-staggered');
+        }
       });
       document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) mobileNav.classList.remove('show-mobile');
+        if (mobileNav.classList.contains('show-mobile') && !mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileNav.classList.remove('show-mobile');
+          const icon = hamburger.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars-staggered');
+        }
+      });
+      document.querySelectorAll('.mobile-nav-item').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('show-mobile');
+          const icon = hamburger.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars-staggered');
+        });
       });
     }
 
@@ -757,24 +897,12 @@
         });
         itemsText += `\n💎 TOTAL AMOUNT: ₹${total.toLocaleString('en-IN')}`;
       }
-      return encodeURIComponent(`*SVARNAM HERITAGE INQUIRY* 🙏
-━━━━━━━━━━━━━━
-👑 *Client Details*
-Name: ${name}
-WhatsApp: ${phone}
-Email: ${email}
-City/Note: ${address}
-
-📜 *Selected Heirlooms*
-${itemsText}
-━━━━━━━━━━━━━━
-Kindly share availability, video, and best price.`);
+      return encodeURIComponent(`*SVARNAM HERITAGE INQUIRY* 🙏\n━━━━━━━━━━━━━━\n👑 Client Details\nName: ${name}\nWhatsApp: ${phone}\nEmail: ${email}\nCity/Note: ${address}\n\n📜 Selected Heirlooms\n${itemsText}\n━━━━━━━━━━━━━━\nKindly share availability, video, and best price.`);
     }
 
     function sendToWhatsApp() {
       const msg = buildWhatsAppMsg();
-      const number = '919820477123';
-      window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+      window.open(`https://wa.me/919820477123?text=${msg}`, '_blank');
     }
 
     function validateAndSend(e) {
@@ -792,7 +920,7 @@ Kindly share availability, video, and best price.`);
 
     if (quickWhatsapp) {
       quickWhatsapp.addEventListener('click', () => {
-        if (cart.length === 0) { alert('Please add jewelry pieces from the Collection. We will help with custom designs too.'); showSection('jewelry'); return; }
+        if (cart.length === 0) { alert('Please add jewelry pieces from the Collection.'); showSection('jewelry'); return; }
         sendToWhatsApp();
       });
     }
